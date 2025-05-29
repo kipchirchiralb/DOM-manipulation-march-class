@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document Object Model</title>
+</head>
+<body>
+    <h1>The Document Object Model</h1>
+
+    <p>The Document Object Model (DOM) is a programming interface for HTML documents. It represents the page so that programs/javascript can change the document structure, style, and content. The DOM represents the document as nodes and objects. That way, javascript can connect to the page.</p>
+<h1>another heading here</h1>
+    <h2>The Document Object Model (DOM)</h2>
+    <p> Essentially, a web page(html) is converter into a javascript object called  <i>document</i> . </p>
+    <p>HTML elements becomes the object's properties. </p>
+    <p>Each element/property has access to its own properties and methods icluding style,events, attributes.... </p>
+
+    <script>
+        // accessing elements in the DOM
+
+        const theHeading = document.querySelector('h1'); // querySelector is used to select the first element that matches the selector. Other similar methods are querySelectorAll, getElementById, getElementsByClassName, getElementsByTagName.
+
+        console.log(theHeading);
+        console.log(typeof theHeading); // object
+
+        console.log( theHeading.textContent.slice(15));
+
+        theHeading.textContent = "ALBERT KIPCHIRCHIR"
+
+        theHeading.style.color = "red";
+        theHeading.style.backgroundColor = "blue";
+
+       document.body.style.backgroundColor = "black";
+       document.body.style.color = "white";
+
+    </script>
+    
+</body>
+</html>
