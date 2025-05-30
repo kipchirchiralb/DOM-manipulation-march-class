@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Notes App</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/water.css@2/out/water.css"
+    />
+    <style>
+      .notes-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      .note {
+        background-color: rgba(240, 248, 255, 0.112);
+        border-radius: 10px;
+        border: 1px solid aliceblue;
+        position: relative;
+        padding: 10px;
+      }
+      .note button {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Notes App</h1>
+
+    <textarea name="notecontent" id="notecontent"></textarea>
+    <select name="category" id="category">
+      <option value="farming">Farming</option>
+      <option value="education">Education</option>
+      <option value="technology">Technology</option>
+    </select>
+    <button id="addnote">+ Add Note</button>
+
+    <div class="notes-container"></div>
+
+    <script>
+      const notes = [
+        {
+          text: "Buy groceries",
+          datetime: "2025-05-29 15:32",
+          category: "farming",
+        },
+        {
+          text: "Prepare for exam",
+          datetime: "2025-05-29 15:32",
+          category: "education",
+        },
+        {
+          text: "Learn Python",
+          datetime: "2025-05-29 15:32",
+          category: "technology",
+        },
+        {
+          text: "Buy pesticides for farm",
+          datetime: "2025-05-29 15:32",
+          category: "farming",
+        },
+      ];
+
+      function displayNotes(notes) {
+        document.querySelector(".notes-container").innerHTML = "";
+        notes.forEach((note) => {
+          const noteDiv = document.createElement("div");
+          noteDiv.setAttribute("class", "note");
+          noteDiv.innerHTML = `
+              <p class="category"> ${note.category} </p>
+              <p>${note.text}</p>
+              <p> ${note.datetime} </p>
+              <button class="delete-note">❌</button>
+          `;
+
+          document.querySelector(".notes-container").appendChild(noteDiv);
+        });
+      }
+      displayNotes(notes);
+      const textAreaElement = document.getElementById("notecontent");
+      const addNoteButton = document.getElementById("addnote");
+      const categoryElement = document.getElementById("category");
+
+      addNoteButton.addEventListener("click", () => {
+        let newNote = {
+          text: textAreaElement.value,
+          datetime: new Date().toLocaleString(),
+          category: categoryElement.value,
+        };
+        notes.push(newNote);
+        textAreaElement.value = "";
+        displayNotes(notes);
+      });
+
+      document.querySelectorAll(".delete-note").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.target.parentElement.remove();
+        });
+      });
+
+      //   localStorage -- use localsstorage  to temp store notes
+      // implement mobile nav on any projects -- html css js
+
+    </script>
+  </body>
+</html>

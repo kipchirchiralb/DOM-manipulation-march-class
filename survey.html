@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sample Survey Form</title>
+  </head>
+  <body>
+    <h1>Eldohub Academy Students Feedback Forms</h1>
+    <p>Please fill this form carefully to help u improve our services.</p>
+    <form
+      action="https://api.eldohub.co.ke/survey"
+      enctype="multipart/form-data"
+    >
+      <label for="fullname">Full Name</label>
+      <input
+        type="password"
+        name="funame"
+        id="fullname"
+        required
+        placeholder="John Doe"
+      />
+      <br />
+
+      <label for="year">What year wer you at Eldohub</label>
+      <input
+        type="number"
+        name="year"
+        id="year"
+        min="2017"
+        max="2025"
+        required
+        placeholder="202_"
+      />
+      <br />
+      <label for="course">Which Course did you pursue</label>
+      <select name="course" id="course">
+        <option value="web">Web Development</option>
+        <option value="mobile">Mobile App Development</option>
+        <option value="design">Graphic Design</option>
+        <option value="networking">Networking and Cybersecurity</option>
+      </select>
+      <br />
+      <label for="rate">Rate our serviceson a scale 1-10</label>
+      <input
+        type="range"
+        id="range"
+        min="0"
+        max="10"
+        step="1"
+        value="10"
+        oninput="output.value = range.value"
+      />
+      <output id="output">10</output>
+      <br />
+      <label for="comment">Any other Comment</label>
+      <textarea name="comment" id="comment"></textarea>
+      <br />
+      <input type="checkbox" name="maillist" id="maillist" />
+      <label for="maillist"
+        >By submiting this for you accept to recieve emails from us about our
+        services.</label
+      >
+      <br />
+      <input type="checkbox" name="dpa" id="dpa" />
+      <label for="dpa"
+        >By submitting you data you acknoledge we will use this data accroding
+        to the Data Protection Act 2019 and as a data subject you can at any
+        point in time request for you data to be updated or deleted.
+      </label>
+      <br />
+      <input type="submit" value="Complete Survey" />
+    </form>
+  </body>
+</html>
