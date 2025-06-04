@@ -26,10 +26,54 @@
         top: 20px;
         right: 20px;
       }
+      header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      header a {
+        padding: 10px;
+      }
+      .menu-btn {
+        display: none;
+      }
+      @media (max-width: 660px) {
+        .menu-btn {
+          display: block;
+        }
+        nav {
+          display: none;
+        }
+        .show {
+          display: block;
+          position: fixed;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          width: 70%;
+          background-color: blueviolet;
+          z-index: 2;
+        }
+        .show a {
+          display: block;
+          color: white;
+          font-weight: bold;
+        }
+      }
     </style>
   </head>
   <body>
-    <h1>Notes App</h1>
+    <header>
+      <h1>Notes App</h1>
+      <nav>
+        <a href="/">Home</a>
+        <a href="/">about</a>
+        <a href="/">contact</a>
+      </nav>
+      <button class="menu-btn">
+        <img src="./5994_menu.png" alt="menu icon" width="40px" />
+      </button>
+    </header>
 
     <textarea name="notecontent" id="notecontent"></textarea>
     <select name="category" id="category">
@@ -105,6 +149,9 @@
       //   localStorage -- use localsstorage  to temp store notes
       // implement mobile nav on any projects -- html css js
 
+      document.querySelector(".menu-btn").addEventListener("click", () => {
+        document.querySelector("nav").classList.toggle("show");
+      });
     </script>
   </body>
 </html>

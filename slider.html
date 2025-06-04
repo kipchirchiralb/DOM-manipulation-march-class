@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Slider</title>
+    <style>
+      body {
+        overflow-x: hidden;
+      }
+      * {
+        margin: 0;
+      }
+      .slider {
+        display: flex;
+        width: 400%;
+      }
+      .slide {
+        width: 100%;
+        display: block;
+        position: relative;
+      }
+      .slide h2 {
+        position: absolute;
+        top: 50%;
+        left: 20px;
+      }
+      img {
+        height: 500px;
+        width: 100%;
+        object-fit: cover;
+        object-position: top;
+      }
+      .slider {
+        transform: translateX(0%);
+        transition: all 2s ease;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JS Slider</h1>
+
+    <div class="slider">
+      <div class="slide">
+        <img src="./DSC_0032.JPG" alt="" />
+        <h2>Web dev</h2>
+      </div>
+      <div class="slide">
+        <img src="./DSC_0035.JPG" alt="" />
+        <h2>Software dev</h2>
+      </div>
+      <div class="slide">
+        <img src="./DSC_0143.JPG" alt="" />
+        <h2>Graphic</h2>
+      </div>
+      <div class="slide">
+        <img src="./DSC_2210.JPG" alt="" />
+        <h2>Androud</h2>
+      </div>
+      <div class="slide">
+        <img src="./DSC_0035.JPG" alt="" />
+        <h2>Junior</h2>
+      </div>
+      <div class="slide">
+        <img src="./DSC_0143.JPG" alt="" />
+      </div>
+    </div>
+
+    <script>
+      const slider = document.querySelector(".slider");
+
+      const slides = document.querySelectorAll(".slide");
+      const numberOfSlides = slides.length;
+      slider.style.width = `${numberOfSlides * 100}%`;
+      let eachSlidePercentageCover = 100 / numberOfSlides;
+      console.log(eachSlidePercentageCover);
+
+      let currentPosition = 0;
+
+      setInterval(() => {
+        currentPosition -= eachSlidePercentageCover;
+        if (currentPosition < -85) {
+          currentPosition = 0;
+        }
+        slider.style.transform = `translateX(${currentPosition}%)`;
+      }, 3000);
+    </script>
+  </body>
+</html>
